@@ -18,10 +18,10 @@ import java.io.PrintWriter;
  */
 @WebServlet(name = "StocksServlet", urlPatterns = {"/"})
 public class Counter extends HttpServlet {
-        int visitsNumber = 1;
+        int visitsNumber = 0;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+        visitsNumber++;
 
         
         PrintWriter out = response.getWriter();
@@ -31,7 +31,7 @@ public class Counter extends HttpServlet {
         out.println("<title>Counter</title>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h1>Number Of Visits: " + visitsNumber++ + "</h1>");
+        out.println("<h1>Number Of Visits: " + visitsNumber + "</h1>");
         out.println("</body>");
         out.println("</html>");
         out.flush();
