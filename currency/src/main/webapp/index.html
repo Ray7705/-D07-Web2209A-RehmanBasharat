@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <form action="CurrencyConversion" method="GET">
+            <fieldset>
+                <legend>Currency Conversion</legend>
+                <article>
+                    <label>$CAD </label><input type="text" name="amount" required class="required"/>
+                </article>
+                <article>
+                    <label><input type="radio" name="currency" value="USD"/>USD</label>
+                    <label><input type="radio" name="currency" value="EUR"/>EUR</label>
+                </article>
+                <input type="submit" value="Convert" />
+            </fieldset>
+        </form>
+    </body>
+</html>
