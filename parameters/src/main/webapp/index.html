@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <form action="SignUp" method="get">
+            <fieldset>
+                <legend>SignUp</legend>
+                <article>
+                    <h3>First Name </h3><input type="text" name="firstname" required class="required"/>
+                    <h3>Last Name </h3><input type="text" name="lastname" required class="required"/>
+                </article>
+                <article>
+                    <h3>Course</h3>
+                    <select name="course">
+                        <option>Java I</option>
+                        <option>Java II</option>
+                        <option>Java III</option>
+                    </select>
+                </article>
+                <article>
+                    <h3>Time</h3>
+                    <label><input type="radio" name="time" value="Day"/>Day</label>
+                    <label><input type="radio" name="time" value="Night"/>Night</label>
+                </article>
+                <article>
+                    <h3>Semester</h3>
+                    <label><input type="checkbox" name="semester" value="Fall"/>Fall</label>
+                    <label><input type="checkbox" name="semester" value="Winter"/>Winter</label>
+                    <label><input type="checkbox" name="semester" value="Summer"/>Summer</label>
+                </article>
+
+
+                <input type="submit" value="Submit" />
+            </fieldset>
+        </form>
+    </body>
+</html>
