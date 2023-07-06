@@ -6,6 +6,7 @@ package basharat.jobs.Repository;
 
 import basharat.jobs.Model.Job;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -24,7 +25,7 @@ public class JobRepository {
         return jobList;    
     }
     
-        public ArrayList<Job> getJobsByType(JobType type) {
+    public ArrayList<Job> getJobsByType(JobType type){
         ArrayList<Job> filteredJobs = new ArrayList<>();
         for (Job job : jobs) {
             if (job.getType() == type) {

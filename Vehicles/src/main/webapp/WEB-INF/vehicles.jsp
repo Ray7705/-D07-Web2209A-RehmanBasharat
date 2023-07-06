@@ -1,8 +1,3 @@
-<%-- 
-    Document   : vehicles
-    Created on : Jun 17, 2023, 8:33:22 PM
-    Author     : rehma
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
