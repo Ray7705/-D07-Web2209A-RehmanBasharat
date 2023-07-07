@@ -38,8 +38,20 @@ public class RecipeRepository {
     }
 
     public ArrayList<Recipe> getRecipes() throws ClassNotFoundException, SQLException {
-        // TODO
-        return null;
+        Class.forName("org.mariadb.jdbc.Driver");
+        try (Connection connection = DriverManager.getConnection(connectionUrl, connectionUsername, connectionPassword)) {
+            String query = "SELECT id, name, description, image_path, category_id, FROM recipes ORDER BY name";
+
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            ArrayList<Recipe> recipes = new ArrayList<>();
+            while (resultSet.next()) {
+                recipes.add(readNextRecipe(resultSet));
+            }
+            return recipes;
+        }
     }
 
     public ArrayList<Recipe> getRecipesByCategory(RecipeCategory category) throws ClassNotFoundException, SQLException {
@@ -47,8 +59,19 @@ public class RecipeRepository {
     }
 
     public ArrayList<Recipe> getRecipesByCategory(int categoryId) throws ClassNotFoundException, SQLException {
-        // TODO
-        return null;
+        Class.forName("org.mariadb.jdbc.Driver");
+        try (Connection connection = DriverManager.getConnection(connectionUrl, connectionUsername, connectionPassword)) {
+
+            String query = "SELECT id, name, description, image_path, category_id FROM recipes WHERE category_id = ? ORDER BY name";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, categoryId);
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<Recipe> recipes = new ArrayList<>();
+            while (resultSet.next()) {
+                recipes.add(readNextRecipe(resultSet));
+            }
+            return recipes;
+        }
     }
 
     public ArrayList<Recipe> getLikedRecipes(String username) throws ClassNotFoundException, SQLException {
