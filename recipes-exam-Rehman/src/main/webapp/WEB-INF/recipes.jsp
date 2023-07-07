@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="ca.collegeuniversel.recipes.entities.User"%>
 <%
-    // TODO
+    User name = (User) request.getAttribute("name");
 %>
 <!DOCTYPE html>
 <html>
@@ -10,6 +11,9 @@
         <link rel="stylesheet" href="css/style.css" />
     </head>
     <body class="container vertical">
-        <!-- TODO -->
+        <h1>Welcome <%= name.getName() %></h1>
+        <button type=logout>Log Out</button>
+        <button type="add">Add Recipe</button>
+        
     </body>
 </html>
