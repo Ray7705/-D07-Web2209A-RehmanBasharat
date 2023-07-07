@@ -22,8 +22,18 @@ public class RecipeCategoryRepository {
     }
 
     public RecipeCategory getCategory(int id) throws ClassNotFoundException, SQLException {
-        // TODO
-        return null;
+        Class.forName("org.mariadb.jdbc.Driver");
+        try (Connection connection = DriverManager.getConnection(connectionUrl, connectionUsername, connectionPassword)) {
+            String query = "SELECT id, name, image_path FROM categories WHERE id = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList<RecipeCategory> categories = new ArrayList<>();
+            while (resultSet.next()) {
+                categories.add(readNextCategory(resultSet));
+            }
+            return categories.get(0);
+        }
     }
 
     public ArrayList<RecipeCategory> getCategories() throws ClassNotFoundException, SQLException {
@@ -44,8 +54,8 @@ public class RecipeCategoryRepository {
     private static RecipeCategory readNextCategory(ResultSet resultSet) throws SQLException {
         int id = resultSet.getInt("id");
         String name = resultSet.getString("name");
-        String plural_name = resultSet.getString("image_path");
+        String imagePath = resultSet.getString("image_path");
 
-        return new RecipeCategory(id, name, plural_name);
+        return new RecipeCategory(id, name, imagePath);
     }
 }
