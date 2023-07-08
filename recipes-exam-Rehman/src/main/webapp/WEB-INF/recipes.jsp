@@ -15,5 +15,12 @@
         <button type=logout>Log Out</button>
         <button type="add">Add Recipe</button>
         
+        <div>
+            <fieldset>
+                <legend>Likes</legend>
+                
+                
+            </fieldset>
+        </div>
     </body>
 </html>
